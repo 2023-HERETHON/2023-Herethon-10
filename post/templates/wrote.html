@@ -1,0 +1,65 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'wrote.css'%}">
+
+</head>
+<body>
+<div style="width: 390px; height: 844px; position: relative; background: white">
+  <div style="left: 165px; top: 46px; position: absolute; color: #52ACFF; font-size: 16px; font-family: Noto Sans KR; font-weight: 500; letter-spacing: 0.32px; word-wrap: break-word">글쓰기</div>
+  <a href="고민상담"><img class="ExpandLeft" src="{% static 'img/back.png'%}"></img></a>
+  <div class="Frame48" style="width: 350px; height: 47px; left: 20px; top: 97px; position: absolute; justify-content: center; align-items: center; display: inline-flex">
+    <div class="Rectangle74" style="width: 350px; height: 47px; background: white; border-radius: 6px; border: 0.50px #B8B8B8 solid"></div>
+  </div>
+
+  <form action="" method="POST" enctype="multipart/form-data">
+    {%csrf_token%}
+  <div class="Frame50" style="width: 350px; height: 377px; left: 20px; top: 150px; position: absolute">
+    <div class="Rectangle76" style="width: 350px; height: 377px; left: 0px; top: 0px; position: absolute; background: white; border-radius: 6px; border: 0.50px #B8B8B8 solid"></div>
+    <div style="left: 17px; top: 13px; position: absolute; color: #B0B0B0; font-size: 12px; font-family: Noto Sans KR; font-weight: 400; letter-spacing: 0.24px; word-wrap: break-word">{{form.content}}</div>
+  </div>
+  <div style="left: 37px; top: 109px; position: absolute; color: #B0B0B0; font-size: 14px; font-family: Noto Sans KR; font-weight: 400; letter-spacing: 0.28px; word-wrap: break-word">{{form.title}}</div>
+  <button class="Group254" style="width: 281px; height: 56px; left: 56px; top: 742px; position: absolute">
+    <div class="Rectangle73" style="width: 281px; height: 56px; left: 0px; top: 0px; position: absolute; background: #52ACFF; border-radius: 10px; border: 0.75px #52ACFF solid" value="submit"></div>
+    <div style="left: 103px; top: 17px; position: absolute; color: white; font-size: 16px; font-family: Noto Sans KR; font-weight: 500; letter-spacing: 0.32px; word-wrap: break-word">업로드하기</div>
+  </div>
+  <div class="Group262" style="width: 67px; height: 23px; left: 40px; top: 583px; position: absolute">
+    <div class="Rectangle78" style="width: 67px; height: 23px; left: 0px; top: 0px; position: absolute; border-radius: 30px; border: 0.50px #52ACFF solid"></div>
+<div class="chi" style="left: 12px; top: 5px; position: absolute; color: #52ACFF; font-size: 8px; font-family: Noto Sans KR; font-weight: 400; word-wrap: break-word">
+  <!-- <input type="hidden" name="hashtag" value="{{form.hashtag.취업고민}}"> -->
+  #취업고민</div>
+  </div>
+  <div class="Group263" style="width: 67px; height: 23px; left: 121px; top: 583px; position: absolute">
+    <div class="Rectangle78" style="width: 67px; height: 23px; left: 0px; top: 0px; position: absolute; background: white; border-radius: 30px; border: 0.50px #52ACFF solid"></div>
+    <div class="gin"style="left: 12px; top: 5px; position: absolute; color: #52ACFF; font-size: 10px; font-family: Noto Sans KR; font-weight: 400; word-wrap: break-word">#진로고민</div>
+  </div>
+  <div class="Group264" style="width: 67px; height: 23px; left: 202px; top: 583px; position: absolute">
+    <div class="Rectangle78" style="width: 67px; height: 23px; left: 0px; top: 0px; position: absolute; background: white; border-radius: 30px; border: 0.50px #52ACFF solid"></div>
+    <div class="yaen"style="left: 12px; top: 5px; position: absolute; color: #52ACFF; font-size: 10px; font-family: Noto Sans KR; font-weight: 400; word-wrap: break-word">#연애고민</div>
+  </div>
+  <div class="Group265" style="width: 67px; height: 23px; left: 283px; top: 583px; position: absolute">
+    <div class="Rectangle78" style="width: 67px; height: 23px; left: 0px; top: 0px; position: absolute; background: white; border-radius: 30px; border: 0.50px #52ACFF solid"></div>
+    <div class ="huhman" style="left: 12px; top: 5px; position: absolute; color: #52ACFF; font-size: 10px; font-family: Noto Sans KR; font-weight: 400; word-wrap: break-word">#인간관계</div>
+  </div>
+  <div class="Group266" style="width: 67px; height: 23px; left: 40px; top: 616px; position: absolute">
+    <div class="Rectangle78" style="width: 67px; height: 23px; left: 0px; top: 0px; position: absolute; background: white; border-radius: 30px; border: 0.50px #52ACFF solid"></div>
+    <div class="burn" style="left: 17px; top: 5px; position: absolute; color: #52ACFF; font-size: 10px; font-family: Noto Sans KR; font-weight: 400; word-wrap: break-word">#번아웃</div>
+  </div>
+  <div class="Group267" style="width: 67px; height: 23px; left: 121px; top: 616px; position: absolute">
+    <div class="Rectangle78" style="width: 67px; height: 23px; left: 0px; top: 0px; position: absolute; background: white; border-radius: 30px; border: 0.50px #52ACFF solid"></div>
+    <div class ="diet" style="left: 12px; top: 5px; position: absolute; color: #52ACFF; font-size: 10px; font-family: Noto Sans KR; font-weight: 400; word-wrap: break-word">#다이어트</div>
+    <br>
+    <br>
+    {{form.hashtag}}
+  </div>
+  <div class="1" style="left: 42px; top: 556px; position: absolute; color: #52ACFF; font-size: 12px; font-family: Noto Sans KR; font-weight: 400; word-wrap: break-word">글과 관련된 해시태그를 1개 이상 선택해주세요.</div>
+  <div class="IosStatusBar" style="width: 430px; height: 47px; padding-left: 36px; padding-right: 36px; padding-top: 12px; padding-bottom: 12px; left: -20px; top: -1px; position: absolute; justify-content: space-between; align-items: center; gap: 10px; display: inline-flex">
+    <div class="LeftSide" style="justify-content: center; align-items: center; gap: 5px; display: flex">
+    </div>
+  </form>
+</body>
+</html>

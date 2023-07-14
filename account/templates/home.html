@@ -1,0 +1,42 @@
+<!--home-->
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>main2</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'index.css'%}">
+</head>
+<body>
+    <section class="text11">
+        <div>스트레스,</div>
+        <div>다 함께 풀자!</div>
+    </section>
+    <section class="text12">
+        <div>우리만의 자유로운 우주,</div>
+    </section>
+    
+    <div>
+        <img class="img1" src="{% static 'img/uniHerse.png'%}">
+    </div>
+
+    <div>
+        <img class="img1" src="{% static 'img/logo2.png'%}">
+    </div>
+
+    <aside>
+        <a href="#">
+            <a href="{%url 'login'%}" class="plus_btn1">로그인</a>
+            <!--<button class="plus_btn1">로그인</button>-->
+        </a>
+    </aside>
+    <aside>
+        <a href="#">
+            <a href="{%url 'signup'%}" class="plus_btn2">회원가입</a>
+            <!--<button class="plus_btn2">회원가입</button>-->
+        </a>
+    </aside>
+<script src="{% static 'pot.js'%}"></script>
+</body>
+</html>

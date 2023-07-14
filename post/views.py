@@ -7,9 +7,12 @@ from django.contrib.auth.decorators import login_required
 def main2(request):
     return render (request, 'main2.html')
 
+def meb(request):
+    return render(request,'home.html')
+
 def home(request):
-    post = CounselPost.objects.filter().order_by('-post_like')
-    return render(request, 'home.html', {'post':post})
+    posts = CounselPost.objects.all()
+    return render(request, 'timeline.html', {'posts':posts})
     # return render(request, '#html파일이름', {'post':post})
 
 def write_post(request):
@@ -17,12 +20,38 @@ def write_post(request):
         form = CounselPostForm(request.POST, request.FILES)
         if form.is_valid():
             form.save()
-            return redirect('home')
+            return redirect('job_list')
             # return redirect('고민상담으로 이동')
     else:
         form = CounselPostForm()
-        return render(request, 'index.html', {'form':form})
+        return render(request, 'wrote.html', {'form':form})
         #return render(request, '포스트작성칸html', {'form':form})
+
+def burn_list(request):
+    posts = CounselPost.objects.filter(hashtag='번아웃').order_by('-date')
+    return render(request, 'main2_burn.html', {'posts':posts})
+    #return render(request, '리스트보여주는 html', {'posts':posts})
+
+def career_list(request):
+    posts = CounselPost.objects.filter(hashtag='진로고민').order_by('-date')
+    return render(request, 'main2_career.html', {'posts':posts})
+
+def diet_list(request):
+    posts = CounselPost.objects.filter(hashtag='다이어트').order_by('-date')
+    return render(request, 'main2_diet.html', {'posts':posts})
+
+def job_list(request):
+    posts = CounselPost.objects.filter(hashtag='취업고민').order_by('-date')
+    return render(request, 'main2_job.html', {'posts':posts})
+
+def love_list(request):
+    posts = CounselPost.objects.filter(hashtag='연애고민').order_by('-date')
+    return render(request, 'main2_love.html', {'posts':posts})
+
+def rel_list(request):
+    posts = CounselPost.objects.filter(hashtag='인간관계').order_by('-date')
+    return render(request, 'main2_rel.html', {'posts':posts})
+
 
 def counsel_post_list(request):
     posts = CounselPost.objects.all().order_by('-date')
@@ -111,17 +140,19 @@ def jar_list(request):
     return render(request, 'main3.html', {'posts':posts})
 
 
-def like_post(request, post_id):
-    post = get_object_or_404(CounselPost, id=post_id)
+def like_post(request, id):
+    post = get_object_or_404(CounselPost, id=id)
 
     if request.user in post.like_users.all():
         post.like_users.remove(request.user)
     else:
         post.like_users.add(request.user)
-    # post.like_users.toggle(request.user)
-    return redirect('post_detail', post_id=post_id)
 
-@login_required
+    # post.like_users.toggle(request.user)
+    return redirect(request.META.get('HTTP_REFERER', 'redirect_if_referer_not_found'))
+    # return redirect('career_list')
+
+#@login_required
 def like_comment(request, comment_id):
     comment = get_object_or_404(CounselComment, id=comment_id)
     comment.like_users.toggle(request.user)
@@ -133,8 +164,13 @@ def like_recomment(request, recomment_id):
     recomment.like_users.toggle(request.user)
     return redirect('recomment_detail', recomment_id=recomment_id)
 
-@login_required
+#@login_required
 def like_jarpost(request, jarpost_id):
     jarpost = get_object_or_404(JarPost, id=jarpost_id)
-    jarpost.like_users.toggle(request.user)
+
+    if request.user in jarpost.like_users.all():
+        jarpost.like_users.remove(request.user)
+    else:
+        jarpost.like_users.add(request.user)
+
     return redirect('jarpost_detail', jappost_id=jarpost_id)

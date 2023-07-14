@@ -19,11 +19,19 @@ from django.urls import path
 from django.conf import settings
 from django.conf.urls.static import static
 from post import views
+import account.views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', views.home, name='home'),
+    path('home/', views.home, name='home'),
     path('main', views.main2, name='main2'),
+
+    path('burn_list/', views.burn_list, name='burn_list'),
+    path('career_list/', views.career_list, name='career_list'),
+    path('diet_list/', views.diet_list, name='diet_list'),
+    path('job_list/', views.job_list, name='job_list'),
+    path('love_list/', views.love_list, name='love_list'),
+    path('rel_list/', views.rel_list, name='rel_list'),
     path('create/',views.write_post, name='write'),
     path('post_list/', views.counsel_post_list, name='list'),
     path('detail/<int:id>/', views.post_detail, name='post_detail'),
@@ -33,5 +41,11 @@ urlpatterns = [
     path('create_recomment/<int:id>', views.create_recomment, name="create_recomment"),
     path('jar_list/', views.jar_list, name='jar_list'),
     path('like_post/<int:id>', views.like_post, name='like_post'),
+    
+     path('', views.meb, name='meb'),
+    path('account/login', account.views.login_view, name="login"),
+    path('account/logout', account.views.logout_view, name="logout"),
+    path('account/signup', account.views.signup_view, name="signup"),
+
 ]
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

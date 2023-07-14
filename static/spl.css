@@ -1,0 +1,11 @@
+div{
+    width : 390px;
+    height : 844px;
+    position: relative;
+    background: white;
+}
+.uniherse {
+    display: block; 
+    margin: 0 auto;  
+    width:250px
+  }

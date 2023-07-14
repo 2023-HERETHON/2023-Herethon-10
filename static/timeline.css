@@ -130,36 +130,16 @@ ul {
     height:50px;
 }
 
-.button {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100px;
-    height:5px;
-    font-size: 3px;
-    text-align: center;
-    padding: 7px;
-    margin:5px;
-    border: 2px solid #52ACFF;
-    color: #52ACFF;
-    background-color: white;
-    border-radius: 10px;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    transition: background-color 0.3s, color 0.3s;
-}
-
 .button2 {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 100px;
+    width: 50px;
     height: 5px;
     font-size: 3px;
     text-align: center;
     padding: 7px;
-    margin:5px;
+    margin:5px 0 5px -2px;
     border: 2px solid #52ACFF;
     color: white;
     background-color: #52ACFF;
@@ -169,16 +149,6 @@ ul {
     text-overflow: ellipsis;
     transition: background-color 0.3s, color 0.3s;
 }
-.button:hover {
-    background-color: #52ACFF;
-    color: #fff;
-}
-
-.button:active {
-    background-color: #52ACFF;
-    border-color: #52ACFF;
-    color: #fff;
-}
 
 /*게시글*/
 .boxes{
@@ -186,6 +156,7 @@ ul {
 }
 .title{
     font-weight:bold;
+    margin-top:22px;
 }
 
 .text_wrap{
@@ -240,4 +211,12 @@ ul {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.text20{
+    color:#626262;
+    font-size:13px;
+    font-weight:"bold";
+    margin-left:20px;
+
 }

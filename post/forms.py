@@ -5,6 +5,9 @@ class CounselPostForm(forms.ModelForm):
     class Meta:
         model = CounselPost
         fields = ['title', 'content', 'hashtag', 'image']
+        # widgets = {
+        #     'title' : forms.TextInput(attrs={'class':'a',})
+        # }
 
 class CounselCommentForm(forms.ModelForm):
     class Meta:

@@ -20,6 +20,8 @@ class CounselPost(models.Model):
     like_users = models.ManyToManyField(
         'account.CustomUser',
         related_name='like_counselposts', 
+        null=True, 
+        blank=True
     )
 
     def __str__(self):
@@ -33,6 +35,14 @@ class CounselComment(models.Model):
     date = models.DateField(auto_now_add=True)
     author = models.ForeignKey('account.CustomUser', null=True, on_delete=models.CASCADE)
     comment_like = models.IntegerField(default=0)
+    like_users = models.ManyToManyField(
+        'account.CustomUser',
+        related_name='like_counsel_comments',
+         null=True, 
+        blank=True 
+    )
+    
+
     # user = models.ForeignKey(
     #     settings.AUTH_USER_MODEL,
     #     on_delete=models.CASCADE, 
@@ -53,6 +63,12 @@ class CounselRecomment(models.Model):
     recomment_like = models.IntegerField(default=0)
     date = models.DateField(auto_now_add=True)
     author = models.ForeignKey('account.CustomUser', null=True, on_delete=models.CASCADE)
+    like_users = models.ManyToManyField(
+        'account.CustomUser',
+        related_name='like_recomment_posts', 
+         null=True, 
+        blank=True
+    )
     # user = models.ForeignKey(
     #     settings.AUTH_USER_MODEL,
     #     on_delete=models.CASCADE,
@@ -73,19 +89,40 @@ class JarPost(models.Model):
     date = models.DateField(auto_now_add=True)
     image = models.ImageField(blank=True, null=True, upload_to='post_image')
     author = models.ForeignKey('account.CustomUser', null=True, on_delete=models.CASCADE)
-    # user = models.ForeignKey(
-    #     settings.AUTH_USER_MODEL,
-    #     on_delete=models.CASCADE,
-    #     null=True, 
-    #     default='null'
-    # )
-    # like_users = models.ManyToManyField(
-    #     settings.AUTH_USER_MODEL,
-    #     related_name='like_jarposts'
-    # )
-    # like_users = models.ManyToManyField(
-    #     ,
-    #     related_name='like_jarposts'
-    # )
+    like_users = models.ManyToManyField(
+        'account.CustomUser',
+        related_name='like_jar_posts', 
+         null=True, 
+        blank=True
+    )
+
     def __str__(self):
         return str(self.pk)
+    
+class JarComment(models.Model):
+    comment = models.TextField()
+    post = models.ForeignKey('post.JarPost', null=True, blank=True, on_delete=models.CASCADE, related_name='jar_comment')
+    comment_like = models.IntegerField(default=0)
+    date = models.DateField(auto_now_add=True)
+    author = models.ForeignKey('account.CustomUser', null=True, on_delete=models.CASCADE)
+    comment_like = models.IntegerField(default=0)
+    like_users = models.ManyToManyField(
+        'account.CustomUser',
+        related_name='like_jar_comments', 
+         null=True, 
+        blank=True
+    )
+
+
+class JarRecomment(models.Model):
+    recomment = models.TextField()
+    comment = models.ForeignKey('post.JarComment', null=True, blank=True, on_delete=models.CASCADE, related_name='jar_recomment')
+    recomment_like = models.IntegerField(default=0)
+    date = models.DateField(auto_now_add=True)
+    author = models.ForeignKey('account.CustomUser', null=True, on_delete=models.CASCADE)
+    like_users = models.ManyToManyField(
+        'account.CustomUser',
+        related_name='like_jar_recomments', 
+         null=True, 
+        blank=True
+    )
