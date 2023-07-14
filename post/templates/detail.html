@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>제목: {{post.title}} </h2>
+    <h4>작성 시간: {{post.date}} </h4>
+    <hr>
+    {% if post.image %}
+        <img src="{{post.image.url}}" alt="" height="300">
+    {%endif%}
+    <p> {{post.content}} </p>
+    <a href="{% url 'post_update' post.id %}">게시글 수정하기</a> 
+    <a href="{% url 'post_delete' post.id %}">게시글 삭제하기</a>
+    <hr>
+    <h3>댓글</h3>
+    <form method="POST" action="{% url 'create_comment' post.id %}"> 
+        {% csrf_token %}
+        {{comment_form}}
+        <input type="submit">
+</form>
+<hr>
+    {% for comment in comment_list.all %}
+    <p>{{ comment.comment }} </p>
+
+    <form method="POST" action="{% url 'create_recomment' post.id%}">
+        {%csrf_token%}
+        {% for recomment in recomment_form %}
+            {%if recomment.label != 'Comment' %}
+            {{recomment.label}} : {{recomment}}
+            {%endif%}
+        {%endfor%}
+        <input type="hidden" name="comment" value="{{comment.id}}">
+        <input type="submit" value="대댓글">
+    </form>
+    <h2>{{CounselRecomment.comment}}</h2>
+    {{comment.recomment_set.all}}
+    {% for recomment in comment.recomment.all%}
+    <p> -- 대댓글입니다. {{recomment.recomment}} </p><br>
+    {% endfor %}
+    <hr>
+{%endfor%}
+
+</body>
+</html>

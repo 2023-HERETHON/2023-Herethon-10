@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>main2</title>
+
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'main2.css' %}">
+</head>
+<body>
+    <section>
+        <div id="status-bar">
+            <div id="time"></div>
+            <div id="battery">
+                <img class="battery1" src="{% static 'img/battery.jpg' %}">
+            </div>
+        </div>
+    </section>
+    
+    <section>
+        <div id="status-bar">
+            <div class="logo">
+                <img class="logo_img" src="{% static 'img/logo.jpg' %}">
+            </div>
+            <div class="img_wrap">
+                <img src="{% static 'img/search.jpg' %}">
+                <img class="img_bell" src="{% static 'img/bell.jpg' %}">
+                <a href="myPage.html"><img src="{% static 'img/user0.jpg' %}"></a>
+            </div>
+        </div>
+    </section>
+
+    <nav>
+        <ul class="menu">
+            <li><a href="#" class="menu_link">타임라인</a></li>
+            <li><a href="#" class="menu_link2">고민상담</a></li>
+            <li><a href="#" class="menu_link">고함항아리</a></li>
+            
+        </ul>
+    </nav>
+    
+    <section>
+        <div class="button-container">
+            <button class="button">#취업고민</button>
+            <button class="button">#진로고민</button>
+            <button class="button">#연애고민</button>
+            <button class="button">#인간관계</button>
+            <button class="button">#번아웃</button>
+            <button class="button">#다이어트</button>
+        </div>
+    </section>
+
+    <section>
+        {% for post in posts %}
+        <div class="boxes">
+            <a href="{% url 'post_detail' post.id %}">
+            <div class="title">
+                {{post.title}}
+            </div>
+            <div class="contents">
+                {{post.content}}
+            </div>
+            <div class="text_wrap">
+                <div class="text_wrap1">
+                    <div><img src="{% static 'img/heart.jpg' %}"  class="img0"></div>
+                    <div class="text1">공감</div>
+                    <div class="text2">{{post.like_users.count}}회</div>
+                </div>
+                <div class="text_wrap1">
+                    <div><img src="{% static 'img/comment.jpg' %}" class="img0"></div>
+                    <div class="text1">댓글</div>
+                    <div class="text2">
+                        {{post.post_comment.count}}개
+                    </div>
+                </div>
+            </div>
+            </a>
+        </div>
+        <hr class="hr">
+        {%endfor%}
+    </section>
+
+    <aside>
+        <a href="#">
+            <button class="plus_btn">+</button>
+        </a>
+    </aside>
+<script src="{% static 'main2.js' %}"></script>
+</body>
+</html>
